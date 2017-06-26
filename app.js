@@ -9,7 +9,7 @@ app.get('', function (req, res) {
 io.on('connection', function (socket) {
     console.log("Meme Receivedzzzzz");
     socket.on('meme', function (msg) {
-        io.emit('response', "you said " + msg);
+        socket.emit('response', "you said " + msg);
         console.log("Meme Received: " + msg);
     });
 });
