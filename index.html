@@ -1,30 +1,26 @@
 ﻿<!doctype html>
 <html>
 <head>
-    <title>Socket.IO chat</title>
+    <title>Chat with youself!</title>
 </head>
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 <script>
+    var socket = io();
     $(function () {
-
         socket.on('response', function (msg) {
             alert(msg);
             console.log(msg);
         });
     });
-    var socket = io();
     function sendSocket() {
         var message = document.getElementById("message").value;
-        socket.emit("meme", message);
+        socket.emit("message", message);
         console.log("message:" + document.getElementById("message").value);
     }
 </script>
 <body>
-    <ul id="messages"></ul>
-    <form action="">
-        <input id="message" placeholder="Message"/>
-    </form>
+    <input id="message" placeholder="Message"/>
     <br />
     <br />
     <button onclick="sendSocket()">Send</button>
